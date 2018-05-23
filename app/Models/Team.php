@@ -21,7 +21,7 @@ class Team extends Model
 
     protected $guarded = ['id'];
 
-    protected $fillable = ['club_id','category_id','season_id','name'];
+    protected $fillable = ['club_id','category_id','season_id','name','gender'];
 
     //protected $translatable = ['name'];
 

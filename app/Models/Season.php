@@ -18,8 +18,9 @@ class Season extends Model
     protected $table = 'seasons';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $guarded = ['id'];
+    protected $fillable = ['name'];
+    public $timestamps = true;
     // protected $hidden = [];
     // protected $dates = [];
 

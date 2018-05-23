@@ -17,9 +17,9 @@ class Category extends Model
 
     protected $table = 'categories';
     // protected $primaryKey = 'id';
-    // public $timestamps = false;
-    // protected $guarded = ['id'];
-    protected $fillable = [];
+    public $timestamps = true;
+    protected $guarded = ['id'];
+    protected $fillable = ['category','season_id'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -28,6 +28,10 @@ class Category extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+
+    public function season(){
+        return $this->belongsTo(Season::class);
+    }
 
     /*
     |--------------------------------------------------------------------------

@@ -28,7 +28,37 @@ class CategoryCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        ##DATATABLES
+
+        $this->crud->addColumn([
+            'name' => 'category',
+            'label' => 'Categoría', //trans('backpack::club.name'),
+            'type' => 'text'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'season_id',
+            'label' => 'Temporada',
+            'type' => 'select',
+            'entity' => 'season', // the method that defines the relationship in your Model
+            'attribute' => 'name',
+            'model' => "App\Models\Category"
+        ]);
+
+        $this->crud->addField([
+            'name' => 'category',
+            'label' => 'Categoría',//trans('backpack::categories.name') ,
+            'type' => 'text',
+        ]);
+
+        $this->crud->addField([
+            'name' => 'season_id',
+            'label' => 'Temporada',
+            'type' => 'select',
+            'entity' => 'season',
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model' => "App\Models\Season"
+        ]);
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');

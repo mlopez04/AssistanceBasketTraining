@@ -28,7 +28,21 @@ class SeasonCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        ##DATATABLES
+        $this->crud->addColumn([
+            'name' => 'name',
+            'label' => 'Temporada', //trans('backpack::club.name'),
+            'type' => 'text'
+        ]);
+
+        ## FORM
+        $this->crud->addField([
+            'name' => 'name',
+            'label' => 'Temporada',//trans('backpack::categories.name') ,
+            'type' => 'text',
+        ]);
+
+
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');

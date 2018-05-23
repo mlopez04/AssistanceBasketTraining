@@ -70,7 +70,33 @@ class TeamCrudController extends CrudController
             'type' => 'select',
             'entity' => 'club',
             'attribute' => 'name', // foreign key attribute that is shown to user
-            'model' => "App\Models\Team"
+            'model' => "App\Models\Club"
+        ]);
+
+        $this->crud->addField([
+            'name' => 'category_id',
+            'label' => 'Categoría',
+            'type' => 'select',
+            'entity' => 'category',
+            'attribute' => 'category', // foreign key attribute that is shown to user
+            'model' => "App\Models\Category"
+        ]);
+
+        $this->crud->addField([
+            'name' => 'season_id',
+            'label' => 'Temporada',
+            'type' => 'select',
+            'entity' => 'season',
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model' => "App\Models\Season"
+        ]);
+
+        $this->crud->addField([
+            'name' => 'gender',
+            'label' => 'Sexo',
+            'type' => 'select_from_array',
+            'options' => ['fem' => 'Femenino', 'masc' => 'Masculino', 'mix' => 'Mixto'],
+            'allows_null' => false,
         ]);
 
         /*
