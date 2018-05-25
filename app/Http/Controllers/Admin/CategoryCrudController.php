@@ -27,7 +27,7 @@ class CategoryCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        
+
 
         ##DATATABLES
 
