@@ -9,6 +9,7 @@ Control de asistencia a entrenamientos de basket
 git clone https://github.com/mlopez04/assitancetotrainings.git att
 cd att
 composer install
+php artisan key:generate
 cp .env.example .env
 ```
 ## Database 

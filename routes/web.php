@@ -18,11 +18,9 @@ Route::get('/', function () {
     return Redirect::to('/admin/user');
 });
 
-Route::get('register', function () {
-    return Redirect::to('/admin/user');
-});
 
-Route::post('register', function () {
+Route::match(array('GET', 'POST'), 'register', function()
+{
     return Redirect::to('/admin/user');
 });
 
