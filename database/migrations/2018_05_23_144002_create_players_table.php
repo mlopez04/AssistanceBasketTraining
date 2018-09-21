@@ -16,14 +16,35 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('surname');
-            $table->string('phone');
-            $table->string('email');
-            $table->integer('age');
-            $table->string('gender');
-            $table->string('image');
+            $table->string('surname')->nullable();
+            $table->string('phone',20)->nullable();
+            $table->string('email')->nullable();
+            $table->integer('age')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('teams_players', function (Blueprint $table) {
+
+            $table->integer('team_id')->unsigned();
+            $table->integer('player_id')->unsigned();
+
+            $table->foreign('team_id')
+                ->references('id')
+                ->on('teams')
+                ->onDelete('cascade');
+
+            $table->foreign('player_id')
+                ->references('id')
+                ->on('players')
+                ->onDelete('cascade');
+
+
+            $table->timestamps();
+        });
+
     }
 
     /**
