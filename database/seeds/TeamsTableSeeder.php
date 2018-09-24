@@ -39,6 +39,17 @@ class TeamsTableSeeder extends Seeder
                 'created_at' => '2018-05-23 13:51:28',
                 'updated_at' => '2018-05-23 13:51:28',
             ),
+            2 => 
+            array (
+                'id' => 3,
+                'club_id' => 1,
+                'category_id' => 1,
+                'season_id' => 2,
+                'name' => 'Baby  Basket 2018-2019',
+                'gender' => 'fem',
+                'created_at' => '2018-09-24 09:52:11',
+                'updated_at' => '2018-09-24 09:52:11',
+            ),
         ));
         
         

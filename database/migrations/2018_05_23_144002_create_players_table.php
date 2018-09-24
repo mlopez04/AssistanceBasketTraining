@@ -55,5 +55,7 @@ class CreatePlayersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('players');
+        Schema::dropIfExists('teams_players');
+
     }
 }

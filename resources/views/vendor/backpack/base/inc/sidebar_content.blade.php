@@ -31,3 +31,7 @@
     </ul>
 </li>
 @endcan
+
+<li><a href='{{ backpack_url('workout') }}'><i class='fa fa-tag'></i> <span>Entrenamiento/Sesion</span></a></li>
+<li><a href='{{ backpack_url('exercise') }}'><i class='fa fa-file'></i> <span>Ejercicios</span></a></li>
+<li><a href='{{ backpack_url('category_exercise') }}'><i class='fa fa-file'></i> <span>categorias de Ejercicios</span></a></li>
