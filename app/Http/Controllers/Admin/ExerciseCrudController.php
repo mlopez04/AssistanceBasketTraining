@@ -33,7 +33,16 @@ class ExerciseCrudController extends CrudController
         */
 
         // TODO: remove setFromDb() and manually define Fields and Columns
+
         //$this->crud->setFromDb();
+
+
+//        $this->crud->removeColumn('number');
+//        $this->crud->removeColumn('description');
+//        $this->crud->removeColumn('material');
+//        $this->crud->removeColumn('image');
+//        $this->crud->removeColumn('active');
+
         $this->crud->addColumn([
             'name' => 'name',
             'label' => 'Nombre', //trans('backpack::club.name'),
@@ -47,20 +56,39 @@ class ExerciseCrudController extends CrudController
         ]);
 
         $this->crud->addColumn([
+            'name' => 'tag_id',
+            'label' => 'Tags', //trans('backpack::club.name'),
+            'type' => 'text'
+        ]);
+
+//        $this->crud->addColumn([
+//            'label' => 'Tags', // Table column heading
+//            'type' => 'select',
+//            'name' => 'exercise_id', // the column that contains the ID of that connected entity;
+//            'entity' => 'exercises', // the method that defines the relationship in your Model
+//            'attribute' => 'name', // foreign key attribute that is shown to user
+//            'model' => "App\Models\Exercise" // foreign key model
+//
+//        ]);
+
+        $this->crud->addColumn([
             'name' => 'duration',
-            'label' => 'Duración', //trans('backpack::club.name'),
+            'label' => 'Duración (min)', //trans('backpack::club.name'),
             'type' => 'number'
         ]);
+
+
+
 
         ## FORM
 
         $this->crud->addField([
             'label' => 'Categoría',//trans('backpack::categories.name') ,
             'type' => 'select2_multiple',
-            'name' => 'category_exercise', // the method that defines the relationship in your Model
-            'entity' => 'category_exercise', // the method that defines the relationship in your Model
+            'name' => 'tags', // the method that defines the relationship in your Model
+            'entity' => 'tags', // the method that defines the relationship in your Model
             'attribute' => 'name', // foreign key attribute that is shown to user
-            'model' => "App\Models\Category_exercise", // foreign key model
+            'model' => "App\Models\Tag", // foreign key model
             'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
             // 'select_all' => true, // show Select All and Clear buttons?
         ]);
@@ -90,13 +118,27 @@ class ExerciseCrudController extends CrudController
         ]);
 
         $this->crud->addField([   // Textarea
+            'name' => 'duration',
+            'label' => 'Duración en minutos',
+            'type' => 'number'
+        ]);
+
+        $this->crud->addField([    // Image
+            'name' => 'image',
+            'label' => 'Imagen',
+            'type' => 'browse',
+        ]);
+
+        $this->crud->addField([   // Textarea
             'name' => 'active',
             'label' => 'Activo',
             'type' => 'radio',
             'options'     => [ // the key will be stored in the db, the value will be shown as label;
-                0 => "Inactivo",
-                1 => "Activo"
+                1 => "Activo",
+                0 => "Inactivo"
+
             ],
+            "default" => 1
         ]);
 
 

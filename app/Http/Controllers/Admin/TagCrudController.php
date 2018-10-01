@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\Category_exerciseRequest as StoreRequest;
-use App\Http\Requests\Category_exerciseRequest as UpdateRequest;
+use App\Http\Requests\TagRequest as StoreRequest;
+use App\Http\Requests\TagRequest as UpdateRequest;
 
 /**
  * Class Category_exerciseCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class Category_exerciseCrudController extends CrudController
+class TagCrudController extends CrudController
 {
     public function setup()
     {
@@ -22,9 +22,9 @@ class Category_exerciseCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Category_exercise');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/category_exercise');
-        $this->crud->setEntityNameStrings('category_exercise', 'category_exercises');
+        $this->crud->setModel('App\Models\Tag');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/tag');
+        $this->crud->setEntityNameStrings('tag', 'tag');
 
         /*
         |--------------------------------------------------------------------------
@@ -33,7 +33,30 @@ class Category_exerciseCrudController extends CrudController
         */
 
         // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
+        //$this->crud->setFromDb();
+        $this->crud->addColumn([
+            'name' => 'name',
+            'label' => 'Nombre', //trans('backpack::club.name'),
+            'type' => 'text'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'name',
+            'label' => 'Nombre',//trans('backpack::categories.name') ,
+            'type' => 'text',
+        ]);
+
+        $this->crud->addField([   // Textarea
+            'name' => 'active',
+            'label' => 'Activo',
+            'type' => 'radio',
+            'options'     => [ // the key will be stored in the db, the value will be shown as label;
+                1 => "Activo",
+                0 => "Inactivo"
+
+            ],
+            "default" => 1
+        ]);
 
         // add asterisk for fields that are required in Category_exerciseRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

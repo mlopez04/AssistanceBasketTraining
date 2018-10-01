@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Category_exercise extends Model
+class Tag extends Model
 {
     use CrudTrait;
 
@@ -15,11 +15,11 @@ class Category_exercise extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'category_exercises';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    protected $table = 'tags';
+    protected $primaryKey = 'id';
+    public $timestamps = true;
     protected $guarded = ['id'];
-    protected $fillable = ['name','active_'];
+    protected $fillable = ['name','active'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -28,10 +28,11 @@ class Category_exercise extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-//    public function exercises()
-//    {
-//        return $this->belongsToMany('App\Models\Exercise', 'exercise_categories', 'categorie_id', 'article_id')->withPivot(['custom_fileds'])->withTimestamps();
-//    }
+    public function exercises()
+    {
+        return $this->belongsToMany('App\Models\Exercise','exercise_tag'); //muchos a muchos
+    }
+
 
 
     /*

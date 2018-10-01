@@ -16,10 +16,10 @@ class Exercise extends Model
     */
 
     protected $table = 'exercises';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    protected $primaryKey = 'id';
+    public $timestamps = true;
     protected $guarded = ['id'];
-    protected $fillable = ['name','number','objetive','material','description','duration','image','category_id','active'];
+    protected $fillable = ['name','number','objetive','material','description','duration','image','active'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -28,9 +28,9 @@ class Exercise extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function category_exercise()
+    public function tags()
     {
-        return $this->belongsToMany('App\Category_exercise'); //muchos a muchos
+        return $this->belongsToMany('App\Models\Tag','exercise_tag'); //muchos a muchos
     }
 
 

@@ -14,7 +14,7 @@ class CreateExercisesTable extends Migration
     public function up()
     {
 
-        Schema::create('category_exercises', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
             $table->integer('active');
@@ -31,28 +31,26 @@ class CreateExercisesTable extends Migration
             $table->text('description')->nullable();
             $table->integer('duration')->nullable();
             $table->string('image')->nullable();
-            $table->integer('category_id')->unsigned()->nullable();
             $table->integer('active');
             $table->timestamps();
         });
 
-        Schema::create('exercise_categories', function (Blueprint $table) {
+        Schema::create('exercise_tag', function (Blueprint $table) {
 
-            $table->integer('category_exercise_id')->unsigned();
+            $table->increments('id');
+            $table->integer('tag_id')->unsigned();
             $table->integer('exercise_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('category_exercise_id')
+            $table->foreign('tag_id')
                 ->references('id')
-                ->on('category_exercises')
+                ->on('tags')
                 ->onDelete('cascade');
 
             $table->foreign('exercise_id')
                 ->references('id')
                 ->on('exercises')
                 ->onDelete('cascade');
-
-            $table->primary(['category_exercise_id', 'exercise_id']);
 
         });
 
@@ -67,8 +65,8 @@ class CreateExercisesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exercise_categories');
-        Schema::dropIfExists('category_exercises');
+        Schema::dropIfExists('exercise_tag');
+        Schema::dropIfExists('tags');
         Schema::dropIfExists('exercises');
     }
 }
