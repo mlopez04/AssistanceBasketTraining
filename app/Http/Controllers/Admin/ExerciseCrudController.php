@@ -55,21 +55,17 @@ class ExerciseCrudController extends CrudController
             'type' => 'text'
         ]);
 
-        $this->crud->addColumn([
-            'name' => 'tag_id',
-            'label' => 'Tags', //trans('backpack::club.name'),
-            'type' => 'text'
-        ]);
+        // n-n relationship (with pivot table)
 
-//        $this->crud->addColumn([
-//            'label' => 'Tags', // Table column heading
-//            'type' => 'select',
-//            'name' => 'exercise_id', // the column that contains the ID of that connected entity;
-//            'entity' => 'exercises', // the method that defines the relationship in your Model
-//            'attribute' => 'name', // foreign key attribute that is shown to user
-//            'model' => "App\Models\Exercise" // foreign key model
-//
-//        ]);
+        $this->crud->addColumn([
+            'label' => 'Tags', // Table column heading
+            'type' => 'select_multiple',
+            'name' => 'tags', // the column that contains the ID of that connected entity;
+            'entity' => 'tags', // the method that defines the relationship in your Model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model' => "App\Models\Tag" // foreign key model
+
+        ]);
 
         $this->crud->addColumn([
             'name' => 'duration',
