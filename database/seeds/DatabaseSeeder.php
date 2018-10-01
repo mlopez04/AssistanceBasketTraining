@@ -20,5 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionsTableSeeder::class);
         $this->call(CategoryExercisesTableSeeder::class);
         $this->call(WorkoutsTableSeeder::class);
+        $this->call(ExercisesTableSeeder::class);
+        $this->call(TagsTableSeeder::class);
+        $this->call(ExerciseTagTableSeeder::class);
     }
 }
